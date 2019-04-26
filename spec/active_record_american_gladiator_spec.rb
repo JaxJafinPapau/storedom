@@ -97,7 +97,7 @@ describe "ActiveRecord American Gladiator" do
       # orders = Order.all.select do |order|
       #   order.items.include?(football) || order.items.include?(wrestling_ring)
       # end
-      orders = Order.includes(:items).where("items.name like ?", "%football%", "%wrestling_ring%")
+      orders = Order.joins(:items).where("items.name =? OR items.name =?", "Football", "Wrestling Ring")
       # Changeable End
 
       # Hint: Take a look at the `Joins` section and the example that combines `joins` and `where` here: http://apidock.com/rails/ActiveRecord/QueryMethods/where
